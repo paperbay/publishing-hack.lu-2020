@@ -52,7 +52,7 @@
 % Load mathematical packages for theorems and related environments. NOTE: choose only one between 'mdftheorems' and 'plaintheorems'.
 \usepackage{styles/mdftheorems}
 %\usepackage{styles/plaintheorems}
-
+\usepackage{tabularx}
 \graphicspath{{images/}{./}} % Paths in which to look for images
 
 \makeindex[columns=3, title=Alphabetical Index, intoc] % Make LaTeX produce the files required to compile the index
@@ -194,13 +194,76 @@
 \mainmatter % Denotes the start of the main document content, resets page numbering and uses arabic numbers
 \setchapterstyle{kao} % Choose the default chapter heading style
 
-\chapter{First Chapter}
+\setchapterimage{assets/reader}
+\setchapterpreamble[u]{\margintoc}
+\chapter{Searching for foo in the North Sea}
 
-\blindtext
+\begin{table}[]
+\begin{tabular}{@{}ll@{}}
+Title       &  Searching for foo in the North Sea\\
+Authors     &  John Foobar\\
+Keywords    &  Sea, North, foo\\
+Description &
+\end{tabular}
+\end{table}
 
-\pagelayout{wide} % No margins
-\addpart{Title of the Part}
 \pagelayout{margin} % Restore margins
+%\pagelayout{wide} % No margins
+
+\section{Introduction}
+Hack.lu is an open convention/conference where people can discuss about computer security, privacy, information technology and its cultural/technical implication on society. It’s the 16th edition of hack.lu.
+
+\begin{marginfigure}[-5.5cm]
+	\includegraphics{assets/hl2020}
+	\caption[hack.lu logo]{The hack.lu logo\\
+	\url{https://hack.lu}}
+	\labfig{marginmonalisa}
+\end{marginfigure}
+
+\section{Template features}
+
+The main features of the template are the following:
+
+
+\begin{description}
+	\item[Page Layout] The text width is reduced to improve readability
+	and make space for the margins, where any sort of elements can be
+	displayed.
+	\item[Chapter Headings] As opposed to Tufte-Latex, we provide a
+	variety of chapter headings among which to choose; examples will be
+	seen in later chapters.
+	\item[Page Headers] They span the whole page, margins included, and,
+	in twoside mode, display alternatively the chapter and the section
+	name.\sidenote[][-2mm]{This is another departure from Tufte's
+	design.}
+	\item[Matters] The commands \Command{frontmatter},
+	\Command{mainmatter} and \Command{backmatter} have been redefined in
+	order to have automatically wide margins in the main matter, and
+	narrow margins in the front and back matters. However, the page
+	style can be changed at any moment, even in the middle of the
+	document.
+	\item[Margin text] We provide commands \Command{sidenote} and
+	\Command{marginnote} to put text in the
+	margins.\sidenote[][-2mm]{Sidenotes (like this!) are numbered while
+	marginnotes are not}
+	\item[Margin figs/tabs] A couple of useful environments is
+	\Environment{marginfigure} and \Environment{margintable}, which, not
+	surprisingly, allow you to put figures and tables in the margins
+	(\cfr \reffig{marginmonalisa}).
+	\item[Margin toc] Finally, since we have wide margins, why don't add
+	a little table of contents in them? See \Command{margintoc} for
+	that.
+	\item[Hyperref] \Package{hyperref} is loaded and by default we try
+	to add bookmarks in a sensible way; in particular, the bookmarks
+	levels are automatically reset at \Command{appendix} and
+	\Command{backmatter}. Moreover, we also provide a small package to
+	ease the hyperreferencing of other parts of the text.
+	\item[Bibliography] We want the reader to be able to know what has
+	been cited without having to go to the end of the document every
+	time, so citations go in the margins as well as at the end, as in
+	Tufte-Latex. Unlike that class, however, you are free to customise
+	the citations as you wish.
+\end{description}
 
 \chapter{Second Chapter}
 
@@ -231,7 +294,7 @@
 \printbibliography[heading=bibintoc, title=Bibliography, prenote=bibnote] % Add the bibliography heading to the ToC, set the title of the bibliography and output the bibliography note
 
 %----------------------------------------------------------------------------------------
-%	NOMENCLATURE
+%ige	NOMENCLATURE
 %----------------------------------------------------------------------------------------
 
 % The nomenclature needs to be compiled on the command line with 'makeindex main.nlo -s nomencl.ist -o main.nls' from the template directory
