@@ -1,0 +1,3 @@
+[submodule "kaobook"]
+	path = kaobook
+	url = https://github.com/paperbay/kaobook.git
